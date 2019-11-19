@@ -1,13 +1,19 @@
 import React from "react";
-import { reduxForm, Field } from "redux-form";
-import FormField from "../../_common/FormField/FormField";
-import validate from "./validate";
-import style from "./SignUp.module.scss";
+import { reduxForm, Field, InjectedFormProps } from "redux-form";
 import { Link } from "react-router-dom";
 
-const SignUp: React.FC = ({ handleSubmit }: any) => {
-  const onSubmit = (values: any) => {
-    console.log("---", values);
+import FormField from "../../_common/FormField/FormField";
+import { ISignUpValues } from "../../../models/signUp";
+import validate from "./validate";
+import style from "./SignUp.module.scss";
+import { useDispatch } from "react-redux";
+import {signUpAction} from "../../../redux/signUp/signUpActions";
+
+const SignUp: React.FC<InjectedFormProps> = ({ handleSubmit }: any) => {
+  const dispatch = useDispatch();
+  const onSubmit = (values: ISignUpValues): void => {
+    console.log("onSubmit---", values);
+    dispatch(signUpAction(values))
   };
 
   return (
@@ -34,7 +40,7 @@ const SignUp: React.FC = ({ handleSubmit }: any) => {
           type="password"
           placeholder="Your Password"
           className={style.input}
-          fieldType='password'
+          fieldType="password"
         />
         <Field
           component={FormField}
@@ -42,8 +48,7 @@ const SignUp: React.FC = ({ handleSubmit }: any) => {
           type="password"
           placeholder="Confirm Password"
           className={style.input}
-          fieldType='password'
-
+          fieldType="password"
         />
         <button type="submit" className={style.submitBtn}>
           Sign In
@@ -56,4 +61,4 @@ const SignUp: React.FC = ({ handleSubmit }: any) => {
   );
 };
 
-export default reduxForm({ form: "signUp", validate })(SignUp);
+export default reduxForm<{}, {}>({ form: "signUp", validate })(SignUp);

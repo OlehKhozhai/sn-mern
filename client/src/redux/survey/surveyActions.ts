@@ -5,7 +5,7 @@ import {
   ISurvey
 } from "./surveyTypes";
 import { Dispatch } from "react";
-import { ISignUpValues } from "../../models/signUpModels";
+import { ISignUpValues } from "../../models/signUp";
 
 export const createSurveyAction = (survey: ISurvey) => ({
   type: CREATE_SURVEY,
@@ -22,8 +22,8 @@ export const removeSurveyAction = (id: string) => ({
   payload: id
 });
 
-export const signUpAction = (values: ISignUpValues) => (
-  dispatch: Dispatch<any>
-) => {
-  console.log("signUpAction", values);
-};
+// export const signUpAction = (values: ISignUpValues) => (
+//   dispatch: Dispatch<any>
+// ) => {
+//   console.log("signUpAction", values);
+// };

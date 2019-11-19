@@ -1,7 +1,10 @@
-export default (values: any) => {
-    const errors: any = {};
+import { ILoginValues } from "../../../models/login";
 
-    if (values && !values.name) errors.name = "Name is require";
-    console.log(errors, values);
-    return errors;
+export default (values: ILoginValues) => {
+  const errors: Partial<ILoginValues> = {};
+
+  if (!values.email) errors.email = "Email is require";
+  if (!values.password) errors.password = "Password is require";
+
+  return errors;
 };

@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { reduxForm, Field } from "redux-form";
+import { reduxForm, Field, InjectedFormProps } from "redux-form";
+import { ILoginValues } from "../../../models/login";
 import FormField from "../../_common/FormField/FormField";
 import validate from "./validate";
 import style from "./Login.module.scss";
 
-const SignUp: React.FC = ({ handleSubmit }: any) => {
-  const onSubmit = (values: any) => {
+const Login: React.FC<InjectedFormProps> = ({ handleSubmit }: any) => {
+  const onSubmit = (values: ILoginValues) => {
     console.log("---", values);
   };
 
@@ -40,4 +41,4 @@ const SignUp: React.FC = ({ handleSubmit }: any) => {
   );
 };
 
-export default reduxForm({ form: "signUp", validate })(SignUp);
+export default reduxForm<{}, {}>({ form: "login", validate })(Login);
