@@ -12,9 +12,6 @@ const PostSchema = new mongoose.Schema({
   name: {
     type: String
   },
-  avatar: {
-    type: String
-  },
   likes: [
     {
       user: {
@@ -36,9 +33,6 @@ const PostSchema = new mongoose.Schema({
       name: {
         type: String,
         required: true
-      },
-      avatar: {
-        type: String
       },
       date: {
         type: Date,

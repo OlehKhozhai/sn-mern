@@ -10,7 +10,7 @@ const User = require("../../models/User");
 /**
  * @route /api/auth
  * @desc Return user
- * @access Public
+ * @access Private
  */
 router.get("/", auth, async (req, res) => {
   try {
@@ -62,7 +62,7 @@ router.post(
         { expiresIn: 360000 },
         (err, token) => {
           if (err) throw err;
-          res.json({ token });
+          res.json({ token, name: user.name, email: user.email });
         }
       );
     } catch (e) {

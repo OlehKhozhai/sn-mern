@@ -1,25 +1,27 @@
-import React from "react";
+import React, { Dispatch } from "react";
 import { reduxForm, Field, InjectedFormProps } from "redux-form";
 import { Link } from "react-router-dom";
-
+import { useDispatch } from "react-redux";
 import FormField from "../../_common/FormField/FormField";
 import { ISignUpValues } from "../../../models/signUp";
+import { signUpAction } from "../../../redux/auth/authActions";
 import validate from "./validate";
 import style from "./SignUp.module.scss";
-import { useDispatch } from "react-redux";
-import {signUpAction} from "../../../redux/signUp/signUpActions";
 
-const SignUp: React.FC<InjectedFormProps> = ({ handleSubmit }: any) => {
-  const dispatch = useDispatch();
-  const onSubmit = (values: ISignUpValues): void => {
-    console.log("onSubmit---", values);
-    dispatch(signUpAction(values))
-  };
+const SignUp: React.FC<InjectedFormProps> = ({
+  handleSubmit,
+  error,
+  history
+}: any) => {
+  const dispatch: any = useDispatch();
+
+  const onSubmit = (values: ISignUpValues) =>
+    dispatch(signUpAction(values)).then(() => history.push("/profile"));
 
   return (
     <div className={style.root}>
       <h3 className={style.title}>CREATE ACCOUNT</h3>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className={style.form}>
         <Field
           component={FormField}
           name="name"
@@ -53,6 +55,7 @@ const SignUp: React.FC<InjectedFormProps> = ({ handleSubmit }: any) => {
         <button type="submit" className={style.submitBtn}>
           Sign In
         </button>
+        {error && <p className={style.error}>{error}</p>}
       </form>
       <p>
         Have already an account ? <Link to="/login">Login here</Link>

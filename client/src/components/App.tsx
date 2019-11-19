@@ -1,23 +1,24 @@
-import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import { withRouter } from "react-router-dom";
 
-import Header from "./layout/Header/Header";
-import Login from "./auth/Login/Login";
-import SignUp from "./auth/SignUp/SignUp";
-import Home from "./layout/Home/Home";
-import style from "./App.module.scss";
+import Header from "./_common/Header/Header";
+import MainRoutes from "../routes";
+import { useDispatch } from "react-redux";
+import { refreshUserAction } from "../redux/auth/authActions";
 
-const App: React.FC = () => (
-  <BrowserRouter>
-    <Header />
-    <section className={style.container}>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/sign-up" component={SignUp} />
-      </Switch>
-    </section>
-  </BrowserRouter>
-);
+const App: React.FC = ({ history }: any) => {
+  const dispatch: any = useDispatch();
 
-export default App;
+  useEffect(() => {
+    dispatch(refreshUserAction()).catch(() => history.push("/"));
+  }, [dispatch]);
+
+  return (
+    <>
+      <Header />
+      <MainRoutes />
+    </>
+  );
+};
+
+export default withRouter(App);
