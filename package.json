@@ -1,36 +1,25 @@
 {
-  "name": "survey",
-  "version": "0.1.0",
+  "main": "server",
   "private": true,
-  "dependencies": {
-    "@types/jest": "24.0.20",
-    "@types/node": "12.11.7",
-    "@types/react": "16.9.11",
-    "@types/react-dom": "16.9.3",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0",
-    "react-scripts": "3.2.0",
-    "typescript": "3.6.4"
-  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "node server",
+    "server": "nodemon server",
+    "client": "cd ./client && yarn start",
+    "dev": "concurrently \"yarn server\" \"yarn client\""
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "config": "^3.2.4",
+    "express": "^4.17.1",
+    "express-validator": "^6.2.0",
+    "gravatar": "^1.8.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.7.7",
+    "request": "^2.88.0"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "devDependencies": {
+    "concurrently": "^5.0.0",
+    "nodemon": "^1.19.4"
+  },
+  "license": "MIT"
 }

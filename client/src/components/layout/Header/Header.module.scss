@@ -1,0 +1,20 @@
+.root {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  background-image: linear-gradient(to left, #74ebd5, #9face6);
+  color: white;
+
+  nav ul {
+    display: flex;
+    justify-content: space-between;
+
+    li {
+      margin-right: 20px;
+      &:last-of-type {
+        margin-top: 0;
+      }
+    }
+  }
+}

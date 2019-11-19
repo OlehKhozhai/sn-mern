@@ -1,0 +1,6 @@
+{
+  "mongoURI": "mongodb+srv://volocuga:Soadslipknot123@cluster0-ve6zy.mongodb.net/dsn?retryWrites=true&w=majority",
+  "jwtSecret": "secretkey",
+  "githubClientId": "32a3d07b08720dba1b33",
+  "githubClientSecret": "575f8fc12200b63242062dc924f7055528f17601"
+}

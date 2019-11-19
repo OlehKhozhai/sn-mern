@@ -1,0 +1,13 @@
+.root {
+  position: relative;
+  padding-bottom: 25px;
+  text-align: left;
+
+  .error {
+    position: absolute;
+    bottom: 7px;
+    left: 5px;
+    color: tomato;
+    font-size: 12px;
+  }
+}
