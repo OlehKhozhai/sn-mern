@@ -1,10 +1,11 @@
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
-import { getToken } from "../utils/tokenManager";
 import style from "../components/App.module.scss";
+import { useSelector } from "react-redux";
+import { getToken } from "redux/auth/authSelectors";
 
 const PublicRoutes: React.FC<any> = ({ component: Component, ...rest }) => {
-  const isAuthenticated = getToken();
+  const isAuthenticated = useSelector(getToken);
 
   return (
     <section className={style.container}>

@@ -1,9 +1,10 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import { getToken } from "../utils/tokenManager";
+import { getToken } from "redux/auth/authSelectors";
+import { useSelector } from "react-redux";
 
 const PrivateRoutes: React.FC<any> = ({ component: Component, ...rest }) => {
-  const isAuthenticated = getToken();
+  const isAuthenticated = useSelector(getToken);
   return (
     <Route
       {...rest}

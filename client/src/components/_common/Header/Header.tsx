@@ -1,19 +1,18 @@
-import React from "react";
-import { Link, withRouter } from "react-router-dom";
-import Logo from "../../../assets/img/logo.png";
-import { clearToken, getToken } from "../../../utils/tokenManager";
-import { useSelector } from "react-redux";
-import { getUser } from "../../../redux/auth/authSelectors";
-import style from "./Header.module.scss";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { getUser, getToken } from 'redux/auth/authSelectors';
+import { logoutAction } from 'redux/auth/authActions';
+import Logo from 'assets/img/logo.png';
+import { useSelector, useDispatch } from 'react-redux';
+import style from './Header.module.scss';
 
-const Header: React.FC = ({ history }: any) => {
-  const isAuthenticated = getToken();
+const Header: React.FC = () => {
+  const dispatch = useDispatch();
+
+  const isAuthenticated = useSelector(getToken);
   const user = useSelector(getUser);
 
-  const logout = () => {
-    clearToken();
-    history.push("/");
-  };
+  const logout = () => dispatch(logoutAction());
 
   return (
     <header className={style.root}>
@@ -26,9 +25,7 @@ const Header: React.FC = ({ history }: any) => {
             <>
               <li>{user.name}</li>
 
-              <li>
-                {/*<img src={user.avatar} alt="avatar" />*/}
-              </li>
+              <li>{/*<img src={user.avatar} alt="avatar" />*/}</li>
 
               <li onClick={logout}>Logout</li>
             </>
@@ -51,4 +48,4 @@ const Header: React.FC = ({ history }: any) => {
   );
 };
 
-export default withRouter(Header);
+export default Header;

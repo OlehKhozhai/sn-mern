@@ -1,5 +1,13 @@
-import axios from "axios";
+import axios from 'axios';
 
-export default axios.create({
-  headers: { "Content-Type": "application/json" }
-});
+axios.defaults.headers.post['Content-Type'] = 'application/json';
+
+export const setAuthHeader = (token: string) => {
+  axios.defaults.headers.common['x-auth-token'] = token;
+};
+
+export const clearAuthHeader = () => {
+  axios.defaults.headers.common['x-auth-token'] = null;
+};
+
+export default axios;

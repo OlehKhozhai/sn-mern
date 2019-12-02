@@ -1,22 +1,18 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { reduxForm, Field, InjectedFormProps } from "redux-form";
-import { ILoginValues } from "../../../models/login";
-import FormField from "../../_common/FormField/FormField";
-import { loginAction } from "../../../redux/auth/authActions";
-import validate from "./validate";
-import style from "./Login.module.scss";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { reduxForm, Field, InjectedFormProps } from 'redux-form';
+import { ILoginValues } from 'models/login';
+import FormField from '../../_common/FormField/FormField';
+import { loginAction } from 'redux/auth/authActions';
+import validate from './validate';
+import style from './Login.module.scss';
 
-const Login: React.FC<InjectedFormProps> = ({
-  handleSubmit,
-  history,
-  error
-}: any) => {
+const Login: React.FC<InjectedFormProps> = ({ handleSubmit, error }: any) => {
   const dispatch: any = useDispatch();
 
-  const onSubmit = (values: ILoginValues): any =>
-    dispatch(loginAction(values)).then(() => history.push("/profile"));
+  const onSubmit = (values: ILoginValues): void =>
+    dispatch(loginAction(values));
 
   return (
     <div className={style.root}>
@@ -49,4 +45,4 @@ const Login: React.FC<InjectedFormProps> = ({
   );
 };
 
-export default reduxForm<{}, {}>({ form: "login", validate })(Login);
+export default reduxForm<{}, {}>({ form: 'login', validate })(Login);

@@ -1,22 +1,17 @@
-import React, { Dispatch } from "react";
-import { reduxForm, Field, InjectedFormProps } from "redux-form";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import FormField from "../../_common/FormField/FormField";
-import { ISignUpValues } from "../../../models/signUp";
-import { signUpAction } from "../../../redux/auth/authActions";
-import validate from "./validate";
-import style from "./SignUp.module.scss";
+import React from 'react';
+import { reduxForm, Field, InjectedFormProps } from 'redux-form';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import FormField from '../../_common/FormField/FormField';
+import { ISignUpValues } from 'models/signUp';
+import { signUpAction } from 'redux/auth/authActions';
+import validate from './validate';
+import style from './SignUp.module.scss';
 
-const SignUp: React.FC<InjectedFormProps> = ({
-  handleSubmit,
-  error,
-  history
-}: any) => {
+const SignUp: React.FC<InjectedFormProps> = ({ handleSubmit, error }: any) => {
   const dispatch: any = useDispatch();
 
-  const onSubmit = (values: ISignUpValues) =>
-    dispatch(signUpAction(values)).then(() => history.push("/profile"));
+  const onSubmit = (values: ISignUpValues) => dispatch(signUpAction(values));
 
   return (
     <div className={style.root}>
@@ -64,4 +59,4 @@ const SignUp: React.FC<InjectedFormProps> = ({
   );
 };
 
-export default reduxForm<{}, {}>({ form: "signUp", validate })(SignUp);
+export default reduxForm<{}, {}>({ form: 'signUp', validate })(SignUp);

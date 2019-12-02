@@ -4,3 +4,8 @@ export interface ISignUpValues {
   password: string;
   confirmPassword: string;
 }
+
+export interface ISignUpValuesSaga {
+  values: ISignUpValues;
+  type: string;
+}
