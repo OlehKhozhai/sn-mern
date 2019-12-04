@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { getProfileAction } from 'redux/profile/ptofileActions';
+import { getProfileAction } from 'redux/profile/profileActions';
 
 const Profile: React.FC = () => {
   const dispatch = useDispatch();

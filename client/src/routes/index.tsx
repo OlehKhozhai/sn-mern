@@ -1,11 +1,11 @@
+import SignUp from "components/Auth/SignUp/SignUp";
 import React from "react";
 import { Switch } from "react-router-dom";
 import Profile from "../components/Profile/Profile";
 import PrivateRoutes from "./PrivateRoutes";
 import PublicRoutes from "./PublicRoutes";
-import Home from "../components/auth/Home/Home";
-import SignUp from "../components/auth/SignUp/SignUp";
-import Login from "../components/auth/Login/Login";
+import Login from "components/Auth/Login/Login";
+import Home from "components/Auth/Home/Home";
 
 const MainRoutes: React.FC = () => (
   <Switch>

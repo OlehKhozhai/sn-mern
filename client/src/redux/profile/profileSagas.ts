@@ -13,11 +13,11 @@ export default function* profileSaga() {
 
 function* getProfileData() {
   try {
-    const token = yield select(getToken);
-
-    if (!token) return;
-
-    setAuthHeader(token);
+    // const token = yield select(getToken);
+    //
+    // if (!token) return;
+    //
+    // setAuthHeader(token);
 
     const { data } = yield call(() => api.get('api/profile/me'));
     console.log('data', data);

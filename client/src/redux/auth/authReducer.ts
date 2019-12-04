@@ -10,21 +10,22 @@ import {
   LOGOUT,
 } from './authTypes';
 
-const initialState: IUserRedux = {
+const initialState: any = {
   token: '',
   name: '',
   email: '',
+  isAuthenticated: false,
 };
 
 const authReducer = (
   state = initialState,
   action: authActionsType,
-): IUserRedux => {
+): any => {
   switch (action.type) {
     case SIGN_UP_SUCCESS:
     case LOGIN_SUCCESS:
     case REFRESH_USER_SUCCESS:
-      return { ...state, ...action.payload };
+      return { ...state, ...action.payload, isAuthenticated: true };
 
     case SIGN_UP_FAIL:
     case LOGIN_FAIL:
